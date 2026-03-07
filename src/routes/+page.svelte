@@ -1,5 +1,11 @@
 <script>
+    import DashboardExperiment from "$lib/components/DashboardExperiment.svelte";
     import Stone from "$lib/components/Stone.svelte";
+
+    const { data } = $props();
+
+    const latestExperiment = $derived(data.experiments[0]);
+    const recentExperiments = $derived(data.experiments.slice(1));
 </script>
 
 <svelte:head>
@@ -37,26 +43,12 @@
             </p>
         </header>
 
-        <a href="/experiments/experiment-1">
-            Experiment 1
-        </a>
+        <DashboardExperiment experiment={latestExperiment} index={0} />
 
         <div class="recent-experiments-inner">
-            <a href="/experiments/experiment-1">
-                Experiment 2
-            </a>
-
-            <a href="/experiments/experiment-1">
-                Experiment 3
-            </a>
-
-            <a href="/experiments/experiment-1">
-                Experiment 4
-            </a>
-
-            <a href="/experiments/experiment-1">
-                Experiment 5
-            </a>
+            {#each recentExperiments as experiment, index (experiment.id)}
+                <DashboardExperiment {experiment} index={index + 1} />
+            {/each}
         </div>
     </section>
 </Stone>
@@ -149,30 +141,6 @@
             gap: 1rem;
             z-index: 1;
         }
-
-        & a {
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-            height: 100%;
-            padding: 1rem;
-            background-color: var(--neutral-150);
-            border-radius: 0.5rem;
-            border: 1px solid var(--neutral-250);
-            color: inherit;
-            text-decoration: none;
-            transition: all 0.25s ease-in-out;
-            z-index: 1;
-
-            &:hover {
-                border: 1px solid var(--accent1-500);
-                transform: scale(1.01);
-                transition: all 0.25s ease-in-out;
-                cursor: pointer;
-            }
-        }
     }
 
     .recent-reads {
@@ -218,6 +186,12 @@
         .featured-items {
             grid-template-columns: repeat(1, 1fr);
             padding: 0;
+        }
+
+        .recent-experiments {
+            & .recent-experiments-inner {
+                grid-template-columns: repeat(1, 1fr);
+            }
         }
     }
 </style>

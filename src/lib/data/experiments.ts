@@ -1,24 +1,9 @@
+import { experimentSchema } from '$lib/schemas/experiments';
 import { z } from 'zod';
 
 const EXPERIMENTS_GITHUB_URL = 'https://github.com/wraithcode/experiments';
 
-export const experimentSchema = z.object({
-    id: z.string(),
-    title: z.string(),
-    route: z.string(),
-    description: z.string(),
-    links: z.array(z.object({
-        name: z.string(),
-        url: z.string(),
-        icon: z.string(),
-    })),
-    published: z.boolean(),
-    createdAt: z.string(),
-});
-
-export type Experiment = z.infer<typeof experimentSchema>;
-
-export const experiments: Experiment[] = [
+const experimentsData = [
     {
         id: 'orphans',
         title: 'Orphans',
@@ -165,3 +150,5 @@ export const experiments: Experiment[] = [
         createdAt: '2024-06-21T04:00:01.000Z',
     },
 ];
+
+export const experiments = z.array(experimentSchema).parse(experimentsData);

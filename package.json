@@ -21,6 +21,9 @@
         "db:studio": "drizzle-kit studio",
         "auth:schema": "better-auth generate --config src/lib/server/auth.ts --output src/lib/server/db/auth.schema.ts --yes"
     },
+    "dependencies": {
+        "dayjs": "^1.11.19"
+    },
     "devDependencies": {
         "@antfu/eslint-config": "^7.6.1",
         "@better-auth/cli": "^1.4.18",
