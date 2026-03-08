@@ -1,0 +1,1 @@
+export const EXPERIMENTS_GITHUB_URL = 'https://github.com/wraithcode/experiments';

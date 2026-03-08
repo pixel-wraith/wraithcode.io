@@ -1,7 +1,6 @@
+import { EXPERIMENTS_GITHUB_URL } from '$lib/constants/experiments';
 import { experimentSchema } from '$lib/schemas/experiments';
 import { z } from 'zod';
-
-const EXPERIMENTS_GITHUB_URL = 'https://github.com/wraithcode/experiments';
 
 const experimentsData = [
     {
