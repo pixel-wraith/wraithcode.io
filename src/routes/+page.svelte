@@ -54,10 +54,12 @@
             {/each}
         </div>
 
-        <a href="/experiments" class="view-all-link">
-            View All Experiments
-            <i class="fa-regular fa-arrow-right"></i>
-        </a>
+        <div class="view-all-link-container">
+            <a href="/experiments" class="view-all-link">
+                View All Experiments
+                <i class="fa-regular fa-arrow-right"></i>
+            </a>
+        </div>
     </section>
 </Stone>
 
@@ -112,6 +114,13 @@
                 </div>
             </a>
         {/each}
+
+        <div class="view-all-link-container">
+            <a href="/contents" class="view-all-link">
+                View All Contents
+                <i class="fa-regular fa-arrow-right"></i>
+            </a>
+        </div>
     </section>
 </Stone>
 
@@ -172,13 +181,19 @@
             z-index: 1;
         }
 
+        & .view-all-link-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: 0.5rem;
+        }
+
         & .view-all-link {
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 0.5rem;
-            width: 100%;
-            padding: 0.5rem;
             color: var(--primary-500);
             text-decoration: none;
             transition: all 0.25s ease-in-out;
@@ -188,7 +203,7 @@
             }
 
             &:hover {
-                color: var(--primary-500);
+                color: var(--primary-300);
                 cursor: pointer;
 
                 & i {
@@ -314,6 +329,37 @@
                 font-size: 0.875rem;
                 color: var(--neutral-600);
                 transition: all 0.25s ease-in-out;
+            }
+        }
+
+        & .view-all-link-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: 0.5rem;
+        }
+
+        & .view-all-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            color: var(--accent2-500);
+            text-decoration: none;
+            transition: all 0.25s ease-in-out;
+
+            & i {
+                transition: all 0.25s ease-in-out;
+            }
+
+            &:hover {
+                color: var(--accent2-300);
+                cursor: pointer;
+
+                & i {
+                    translate: 0.25rem 0;
+                }
             }
         }
     }
