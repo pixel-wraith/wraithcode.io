@@ -53,6 +53,11 @@
                 <DashboardExperiment {experiment} index={index + 1} />
             {/each}
         </div>
+
+        <a href="/experiments" class="view-all-link">
+            View All Experiments
+            <i class="fa-regular fa-arrow-right"></i>
+        </a>
     </section>
 </Stone>
 
@@ -165,6 +170,31 @@
             grid-template-columns: repeat(2, 1fr);
             gap: 1rem;
             z-index: 1;
+        }
+
+        & .view-all-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            width: 100%;
+            padding: 0.5rem;
+            color: var(--primary-500);
+            text-decoration: none;
+            transition: all 0.25s ease-in-out;
+
+            & i {
+                transition: all 0.25s ease-in-out;
+            }
+
+            &:hover {
+                color: var(--primary-500);
+                cursor: pointer;
+
+                & i {
+                    translate: 0.25rem 0;
+                }
+            }
         }
     }
 
