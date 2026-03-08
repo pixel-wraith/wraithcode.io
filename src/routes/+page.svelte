@@ -62,7 +62,7 @@
             <h2>Interesting Content</h2>
 
             <p>
-                There's so much information just waiting to be consumed out there! Here's what I've found interesting recently...
+                There's so much information out there just waiting to be consumed! Here's what I've found interesting recently...
             </p>
         </header>
 

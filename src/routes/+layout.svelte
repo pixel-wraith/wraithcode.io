@@ -33,7 +33,17 @@
         <footer>
             <div class="footer-stone">
                 <div class="footer-stone-inner">
-                    ...
+                    <span class="copyright">Copyright © 2026 WraithCode. All rights reserved.</span>
+
+                    <IconLink
+                        icon="fa-brands fa-github"
+                        href="https://github.com/pixel-wraith/wraithcode.io"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        size="1rem"
+                        theme="accent2"
+                        hoverable
+                    />
                 </div>
             </div>
         </footer>
@@ -123,13 +133,18 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            gap: 1rem;
             width: 100%;
             height: 100%;
-            padding: 0.5rem;
+            padding: 0.5rem 1rem;
             background-color: var(--neutral-100);
             background-image: radial-gradient(circle at 30% 0%, var(--neutral-150), var(--neutral-100));
             border-top-right-radius: 0.4rem;
             border-top-left-radius: 0.4rem;
+
+            & .copyright {
+                font-size: 0.8rem;
+            }
         }
     }
 </style>
