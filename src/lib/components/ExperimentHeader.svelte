@@ -21,7 +21,7 @@
 
         <div class="right-col">
             {#each links as link}
-                <a href={link.url}>
+                <a href={link.url} target="_blank" rel="noopener noreferrer">
                     <i class={link.icon}></i>
                     {link.name}
                 </a>

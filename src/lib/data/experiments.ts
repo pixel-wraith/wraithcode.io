@@ -11,7 +11,7 @@ const experimentsData = [
         links: [
             {
                 name: 'View on Github',
-                url: `${EXPERIMENTS_GITHUB_URL}/orphans`,
+                url: `${EXPERIMENTS_GITHUB_URL}/orphans/+page.svelte`,
                 icon: 'fa-brands fa-github',
             },
         ],
@@ -26,7 +26,7 @@ const experimentsData = [
         links: [
             {
                 name: 'View on Github',
-                url: `${EXPERIMENTS_GITHUB_URL}/gradient-text`,
+                url: `${EXPERIMENTS_GITHUB_URL}/gradient-text/+page.svelte`,
                 icon: 'fa-brands fa-github',
             },
         ],

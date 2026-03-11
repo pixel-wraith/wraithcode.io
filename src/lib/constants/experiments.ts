@@ -1,1 +1,1 @@
-export const EXPERIMENTS_GITHUB_URL = 'https://github.com/wraithcode/experiments';
+export const EXPERIMENTS_GITHUB_URL = 'https://github.com/pixel-wraith/wraithcode/blob/main/src/routes/experiments';

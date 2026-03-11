@@ -1,4 +1,5 @@
 <script lang="ts">
+    import CodeBlock from "$lib/components/CodeBlock.svelte";
     import ExperimentHeader from "$lib/components/ExperimentHeader.svelte";
     import Input from "$lib/components/Input.svelte";
     import Stone from "$lib/components/Stone.svelte";
@@ -7,6 +8,11 @@
 
     let columns = $state(4);
     let orphans = $state(2);
+
+    const cssCode = $derived(`div.content {
+    columns: ${columns ?? 2};
+    orphans: ${orphans ?? 2};
+}`);
 </script>
 
 <ExperimentHeader links={data.experiment.links} />
@@ -16,7 +22,7 @@
 </Stone>
 
 <Stone>
-    <div>
+    <div class="container">
         <div style="padding-bottom: 1rem;">
             <p>Change the number of columns and orphans to see how the text behaves.</p>
         </div>
@@ -72,11 +78,16 @@
                 Option 7
             </li>
         </ul>
+
+        <div class="code-section">
+            <CodeBlock code={cssCode} lang="css" />
+        </div>
     </div>
 </Stone>
 
 <style>
     .container {
+        width: 100%;
         padding: 1rem;
     }
 
@@ -124,5 +135,14 @@
         padding: 0.25rem 0.5rem;
         margin-bottom: 0.5rem;
         list-style-position: inside;
+    }
+
+    .code-section {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        max-width: 20rem;
+        margin: 4rem auto 0;
     }
 </style>
