@@ -41,7 +41,7 @@ const experimentsData = [
         links: [
             {
                 name: 'View on Github',
-                url: `${EXPERIMENTS_GITHUB_URL}/loading-animations-1`,
+                url: `${EXPERIMENTS_GITHUB_URL}/loading-animations-1/+page.svelte`,
                 icon: 'fa-brands fa-github',
             },
         ],
@@ -56,7 +56,7 @@ const experimentsData = [
         links: [
             {
                 name: 'View on Github',
-                url: `${EXPERIMENTS_GITHUB_URL}/paint-order`,
+                url: `${EXPERIMENTS_GITHUB_URL}/paint-order/+page.svelte`,
                 icon: 'fa-brands fa-github',
             },
             {
@@ -76,7 +76,7 @@ const experimentsData = [
         links: [
             {
                 name: 'View on Github',
-                url: `${EXPERIMENTS_GITHUB_URL}/notifications-api`,
+                url: `${EXPERIMENTS_GITHUB_URL}/notifications-api/+page.svelte`,
                 icon: 'fa-brands fa-github',
             },
             {
@@ -96,7 +96,7 @@ const experimentsData = [
         links: [
             {
                 name: 'View on Github',
-                url: `${EXPERIMENTS_GITHUB_URL}/indexdb`,
+                url: `${EXPERIMENTS_GITHUB_URL}/indexdb/+page.svelte`,
                 icon: 'fa-brands fa-github',
             },
             {
@@ -116,7 +116,7 @@ const experimentsData = [
         links: [
             {
                 name: 'View on Github',
-                url: `${EXPERIMENTS_GITHUB_URL}/html/details`,
+                url: `${EXPERIMENTS_GITHUB_URL}/html/details/+page.svelte`,
                 icon: 'fa-brands fa-github',
             },
             {
@@ -136,7 +136,7 @@ const experimentsData = [
         links: [
             {
                 name: 'View on Github',
-                url: `${EXPERIMENTS_GITHUB_URL}/dev-to-api`,
+                url: `${EXPERIMENTS_GITHUB_URL}/dev-to-api/+page.svelte`,
                 icon: 'fa-brands fa-github',
             },
             {
