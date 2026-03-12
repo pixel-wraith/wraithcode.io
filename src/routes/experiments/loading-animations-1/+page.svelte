@@ -133,10 +133,6 @@
         }
     }
 
-    h1 {
-        margin: 0;
-    }
-
     .controls {
         display: flex;
         flex-direction: column;

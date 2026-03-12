@@ -79,6 +79,6 @@
         display: flex;
         align-items: center;
         justify-content: flex-start;
-        gap: 0.5rem;
+        gap: 1.5rem;
     }
 </style>
