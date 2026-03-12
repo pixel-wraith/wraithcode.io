@@ -1,6 +1,7 @@
 <script lang="ts">
     import CodeBlock from "$lib/components/CodeBlock.svelte";
     import ExperimentHeader from "$lib/components/ExperimentHeader.svelte";
+    import ExperimentTitle from "$lib/components/ExperimentTitle.svelte";
     import Stone from "$lib/components/Stone.svelte";
 
     const { data } = $props();
@@ -15,13 +16,15 @@
 
 <ExperimentHeader links={data.experiment.links} />
 
-<Stone>
-    <p>A simple gradient text effect using only CSS.</p>
-</Stone>
+<ExperimentTitle title="Gradient Text">
+    <p>
+        We can use the <span>background-image</span> CSS property to add a gradient to text.
+    </p>
+</ExperimentTitle>
 
 <Stone>
     <div class="container">
-        <h1>Look at this pretty text!</h1>
+        <div class="gradient-text h1">Look at this pretty text!</div>
 
         <div class="code-section">
             <CodeBlock code={cssCode} lang="css" />
@@ -39,7 +42,7 @@
         padding: 4rem 1rem 1rem;
     }
 
-    h1 {
+    .gradient-text {
         /* https://developer.mozilla.org/en-US/docs/Web/CSS/background-clip */
         -webkit-background-clip: text;
         background-clip: text;

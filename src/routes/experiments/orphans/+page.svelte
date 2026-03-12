@@ -1,6 +1,7 @@
 <script lang="ts">
     import CodeBlock from "$lib/components/CodeBlock.svelte";
     import ExperimentHeader from "$lib/components/ExperimentHeader.svelte";
+    import ExperimentTitle from "$lib/components/ExperimentTitle.svelte";
     import Input from "$lib/components/Input.svelte";
     import Stone from "$lib/components/Stone.svelte";
 
@@ -17,9 +18,11 @@
 
 <ExperimentHeader links={data.experiment.links} />
 
-<Stone>
-    <p>The CSS <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/orphans">orphans</a> property controls the minimum number of lines that must be left at the bottom of a page or column before a break occurs, helping to improve the readability of text in printed documents or multi-column layouts.</p>
-</Stone>
+<ExperimentTitle title="Orphans">
+    <p>
+        We can use the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/orphans">orphans</a> CSS property to control the minimum number of lines that must be left at the bottom of a page or column before a break occurs, helping to improve the readability of text in printed documents or multi-column layouts.
+    </p>
+</ExperimentTitle>
 
 <Stone>
     <div class="container">

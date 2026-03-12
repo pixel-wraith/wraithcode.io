@@ -2,6 +2,7 @@
     import type { Theme } from "$lib/types/props.js";
 
     import ExperimentHeader from "$lib/components/ExperimentHeader.svelte";
+    import ExperimentTitle from "$lib/components/ExperimentTitle.svelte";
     import TextInput from "$lib/components/Input.svelte";
     import LoaderBar1 from "$lib/components/loaders/LoaderBar1.svelte";
     import Select from "$lib/components/Select.svelte";
@@ -43,9 +44,11 @@
 
 <ExperimentHeader links={data.experiment.links} />
 
-<Stone>
-    <h1>Loading Animation</h1>
-</Stone>
+<ExperimentTitle title="Loading Animations">
+    <p>
+        I don't know what it is about loading animations, but for some reason I've always found them to be fun to play around with.
+    </p>
+</ExperimentTitle>
 
 <Stone>
     <div class="container">
