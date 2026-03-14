@@ -22,7 +22,7 @@
 
         <div class="experiments-list">
             {#each data.experiments as experiment, index (experiment.id)}
-                <DashboardExperiment {experiment} {index} />
+                <DashboardExperiment {experiment} index={data.experiments.length - 1 - index} />
             {/each}
         </div>
     </section>
