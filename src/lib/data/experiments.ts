@@ -109,14 +109,14 @@ const experimentsData = [
         createdAt: '2024-09-28T04:25:01.000Z',
     },
     {
-        id: 'html-details',
+        id: 'animated-details',
         title: 'Styling and animating the <details> element',
-        route: '/experiments/html/details',
+        route: '/experiments/animated-details',
         description: 'Playing around with the <details> element to see what can be done with it.',
         links: [
             {
                 name: 'View on Github',
-                url: `${EXPERIMENTS_GITHUB_URL}/html/details/+page.svelte`,
+                url: `${EXPERIMENTS_GITHUB_URL}/animated-details/+page.svelte`,
                 icon: 'fa-brands fa-github',
             },
             {
