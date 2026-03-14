@@ -22,6 +22,7 @@
         "auth:schema": "better-auth generate --config src/lib/server/auth.ts --output src/lib/server/db/auth.schema.ts --yes"
     },
     "dependencies": {
+        "@sentry/sveltekit": "^10.43.0",
         "dayjs": "^1.11.19",
         "shiki": "^4.0.2"
     },
