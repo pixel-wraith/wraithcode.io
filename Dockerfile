@@ -12,6 +12,10 @@ RUN npm ci
 # Copy source code
 COPY . .
 
+# Accept build-time environment variables
+ARG DEV_TO_API_KEY
+ENV DEV_TO_API_KEY=$DEV_TO_API_KEY
+
 # Build the application
 RUN npm run build
 

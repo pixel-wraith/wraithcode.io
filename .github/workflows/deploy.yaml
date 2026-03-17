@@ -34,7 +34,7 @@ jobs:
             -
                 name: Build docker image
                 run: |
-                    docker build . -t iamthewraith/wraithcode:latest -t iamthewraith/wraithcode:${{ github.sha }}
+                    docker build . --build-arg DEV_TO_API_KEY=${{ secrets.DEV_TO_API_KEY }} -t iamthewraith/wraithcode:latest -t iamthewraith/wraithcode:${{ github.sha }}
             
             -
                 name: Push docker image
