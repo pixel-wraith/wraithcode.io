@@ -1,6 +1,6 @@
 services:
   portfolio:
-    image: iamthewraith/wraithcode.io:latest
+    image: iamthewraith/wraithcode:latest
     build:
       context: .
       dockerfile: Dockerfile
