@@ -1,7 +1,7 @@
 import type { IBlogPost } from '$lib/types/blog';
 
 import { error } from '@sveltejs/kit';
-import { DEV_TO_API_KEY } from '$env/static/private';
+import { env } from '$env/dynamic/private';
 import { experiments } from '$lib/data/experiments';
 import { logger } from '$lib/logger';
 
@@ -25,7 +25,7 @@ export const load: PageServerLoad = async () => {
                  * and imported here. This is a server-side file, so it's safe to
                  * store it here.
                  */
-                'api-key': DEV_TO_API_KEY,
+                'api-key': env.DEV_TO_API_KEY as string,
             },
         });
 
