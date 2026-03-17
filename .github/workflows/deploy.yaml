@@ -30,11 +30,17 @@ jobs:
                 run: |
                     rm -rf .env
                     echo "DEV_TO_API_KEY=${{ secrets.DEV_TO_API_KEY }}" >> .env
+                    echo "PUBLIC_SENTRY_DSN=${{ secrets.PUBLIC_SENTRY_DSN }}" >> .env
 
             -
                 name: Build docker image
                 run: |
-                    docker build . --build-arg DEV_TO_API_KEY=${{ secrets.DEV_TO_API_KEY }} -t iamthewraith/wraithcode:latest -t iamthewraith/wraithcode:${{ github.sha }}
+                    docker build . \
+                      --build-arg DEV_TO_API_KEY=${{ secrets.DEV_TO_API_KEY }} \
+                      --build-arg PUBLIC_SENTRY_DSN=${{ secrets.PUBLIC_SENTRY_DSN }} \
+                      --build-arg NODE_ENV=production \
+                      -t iamthewraith/wraithcode:latest \
+                      -t iamthewraith/wraithcode:${{ github.sha }}
             
             -
                 name: Push docker image
