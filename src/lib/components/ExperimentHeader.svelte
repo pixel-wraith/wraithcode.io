@@ -1,6 +1,6 @@
 <script lang="ts">
     import type { experimentLinkSchema } from "$lib/schemas/experiments";
-    import type { z } from "better-auth";
+    import type { z } from "zod";
 
     import Stone from "./Stone.svelte";
 
