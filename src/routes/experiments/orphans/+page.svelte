@@ -18,7 +18,7 @@
 
 <ExperimentHeader links={data.experiment.links} />
 
-<ExperimentTitle title="Orphans">
+<ExperimentTitle title={data.experiment.title}>
     <p>
         We can use the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/orphans">orphans</a> CSS property to control the minimum number of lines that must be left at the bottom of a page or column before a break occurs, helping to improve the readability of text in printed documents or multi-column layouts.
     </p>

@@ -86,7 +86,7 @@
 
 <ExperimentHeader links={data.experiment.links} />
 
-<ExperimentTitle title="Orphans">
+<ExperimentTitle title={data.experiment.title}>
     <p>
         We can hide an element on the page, and then make it visible when the mouse is close to it.
     </p>

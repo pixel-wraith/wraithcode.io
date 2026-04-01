@@ -44,7 +44,7 @@
 
 <ExperimentHeader links={data.experiment.links} />
 
-<ExperimentTitle title="Loading Animations">
+<ExperimentTitle title={data.experiment.title}>
     <p>
         I don't know what it is about loading animations, but for some reason I've always found them to be fun to play around with.
     </p>

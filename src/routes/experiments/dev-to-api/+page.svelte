@@ -68,7 +68,7 @@ return { articles };
 
 <ExperimentHeader links={data.experiment.links} />
 
-<ExperimentTitle title="Let's Play with the DEV API">
+<ExperimentTitle title={data.experiment.title}>
     <p>
         This is a little snippet used in one of my blog posts to illustrate how to work with the dev.to API.
     </p>

@@ -111,7 +111,7 @@
 
 <ExperimentHeader links={data.experiment.links} />
 
-<ExperimentTitle title="Styling and animating the <details> element">
+<ExperimentTitle title={data.experiment.title}>
     <p>
         Playing around with the <code>&lt;details&gt;</code> element to see what can be done with it.
     </p>
