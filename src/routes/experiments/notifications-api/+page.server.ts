@@ -1,14 +1,8 @@
 import { error } from '@sveltejs/kit';
-import { experiments } from '$lib/data/experiments';
+import { loadExperiment } from '$lib/data/experiments';
 
 export async function load() {
-    const experiment = experiments
-        .filter(e => e.published)
-        .map(e => ({
-            ...e,
-            createdAt: new Date(e.createdAt),
-        }))
-        .find(e => e.id === 'notifications-api');
+    const experiment = loadExperiment('notifications-api');
 
     if (!experiment) {
         throw error(404, 'Experiment not found');

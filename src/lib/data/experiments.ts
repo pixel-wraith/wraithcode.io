@@ -166,3 +166,13 @@ const experimentsData = [
 ];
 
 export const experiments = z.array(experimentSchema).parse(experimentsData);
+
+export function loadExperiment(id: string) {
+    return experiments
+        .filter(e => e.published)
+        .map(e => ({
+            ...e,
+            createdAt: new Date(e.createdAt),
+        }))
+        .find(e => e.id === id);
+}

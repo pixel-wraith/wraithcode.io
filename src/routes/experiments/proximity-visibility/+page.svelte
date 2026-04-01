@@ -2,13 +2,14 @@
     import ExperimentHeader from "$lib/components/ExperimentHeader.svelte";
     import ExperimentTitle from "$lib/components/ExperimentTitle.svelte";
     import Stone from "$lib/components/Stone.svelte";
-    // import CodeBlock from "$lib/components/CodeBlock.svelte";
     import { onMount } from "svelte";
 
     const { data } = $props();
 
-    const hiddenElements = $state<HTMLDivElement[]>([]);
-    let glowOverlay: HTMLDivElement;
+    let hiddenEl0 = $state<HTMLDivElement | undefined>(undefined);
+    let hiddenEl1 = $state<HTMLDivElement | undefined>(undefined);
+    let hiddenEl2 = $state<HTMLDivElement | undefined>(undefined);
+    let glowOverlay = $state<HTMLDivElement | undefined>(undefined);
     let mouseX = 0;
     let mouseY = 0;
     let dirty = false;
@@ -42,15 +43,13 @@
     }
 
     const update = () => {
-        if (!hiddenElements.length)
-            return;
-
         dirty = false;
-        for (const hiddenElement of hiddenElements) {
-            const rect = hiddenElement.getBoundingClientRect();
+        const els = [hiddenEl0, hiddenEl1, hiddenEl2].filter(Boolean) as HTMLDivElement[];
+        for (const el of els) {
+            const rect = el.getBoundingClientRect();
             const dist = pointToRectDistance(mouseX, mouseY, rect);
             const alpha = proximityAlpha(dist);
-            hiddenElement.style.opacity = alpha.toFixed(3);
+            el.style.opacity = alpha.toFixed(3);
         }
     };
 
@@ -94,15 +93,15 @@
 
 <Stone>
     <div class="container">
-        <div class="hidden-element" bind:this={hiddenElements[0]}>
+        <div class="hidden-element" bind:this={hiddenEl0}>
             Now you see me...
         </div>
 
-        <div class="hidden-element" bind:this={hiddenElements[1]}>
+        <div class="hidden-element" bind:this={hiddenEl1}>
             Now you see me...
         </div>
 
-        <div class="hidden-element" bind:this={hiddenElements[2]}>
+        <div class="hidden-element" bind:this={hiddenEl2}>
             Now you see me...
         </div>
     </div>
