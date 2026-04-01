@@ -14,8 +14,8 @@
     let mouseY = 0;
     let dirty = false;
 
-    const MAX_RADIUS = 100; // start becoming visible at this distance
-    const MIN_RADIUS = 10; // fully visible when within this distance
+    const MAX_RADIUS = 150; // start becoming visible at this distance
+    const MIN_RADIUS = 1; // fully visible when within this distance
 
     // Utility: clamp, map distance to [0,1] where 0=far, 1=close
     function proximityAlpha(distance: number, minR = MIN_RADIUS, maxR = MAX_RADIUS) {
@@ -129,7 +129,7 @@
         pointer-events: none;
         z-index: 9999;
         background: radial-gradient(
-            circle 100px at var(--mx, -200px) var(--my, -200px),
+            circle 200px at var(--mx, -200px) var(--my, -200px),
             rgba(255, 255, 255, 0.15) 0%,
             rgba(255, 255, 255, 0.06) 30%,
             transparent 70%
