@@ -151,7 +151,7 @@
 
 <ExperimentHeader links={data.experiment.links} />
 
-<ExperimentTitle title="IndexedDB">
+<ExperimentTitle title={data.experiment.title}>
     <p>
         The IndexedDB API allows web applications to store data in the browser and retrieve it later.
     </p>

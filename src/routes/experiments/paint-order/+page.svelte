@@ -17,7 +17,7 @@
 
 <ExperimentHeader links={data.experiment.links} />
 
-<ExperimentTitle title="Paint Order">
+<ExperimentTitle title={data.experiment.title}>
     <p>
         We can use the <span>paint-order</span> CSS property to change the order in which the browser paints text onto the page.
     </p>

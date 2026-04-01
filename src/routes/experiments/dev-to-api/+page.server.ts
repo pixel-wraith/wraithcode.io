@@ -2,7 +2,7 @@ import type { IBlogPost } from '$lib/types/blog';
 
 import { error } from '@sveltejs/kit';
 import { env } from '$env/dynamic/private';
-import { experiments } from '$lib/data/experiments';
+import { loadExperiment } from '$lib/data/experiments';
 import { logger } from '$lib/logger';
 
 import type { PageServerLoad } from './$types';
@@ -35,13 +35,7 @@ export const load: PageServerLoad = async () => {
         throw error(500, 'Failed to fetch articles');
     }
 
-    const experiment = experiments
-        .filter(e => e.published)
-        .map(e => ({
-            ...e,
-            createdAt: new Date(e.createdAt),
-        }))
-        .find(e => e.id === 'dev-to-api');
+    const experiment = loadExperiment('dev-to-api');
 
     if (!experiment) {
         logger.error('Experiment not found', { experimentId: 'dev-to-api' });

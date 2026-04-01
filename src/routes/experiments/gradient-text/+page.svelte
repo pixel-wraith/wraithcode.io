@@ -16,7 +16,7 @@
 
 <ExperimentHeader links={data.experiment.links} />
 
-<ExperimentTitle title="Gradient Text">
+<ExperimentTitle title={data.experiment.title}>
     <p>
         We can use the <span>background-image</span> CSS property to add a gradient to text.
     </p>

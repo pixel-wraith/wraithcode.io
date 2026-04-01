@@ -33,7 +33,7 @@
 
 <ExperimentHeader links={data.experiment.links} />
 
-<ExperimentTitle title="Notifications API">
+<ExperimentTitle title={data.experiment.title}>
     <p>
         The Notifications API allows web applications to display notifications to the user.
     </p>
