@@ -1,15 +1,17 @@
 <script lang="ts">
-    // import CodeBlock from "$lib/components/CodeBlock.svelte";
     import ExperimentHeader from "$lib/components/ExperimentHeader.svelte";
     import ExperimentTitle from "$lib/components/ExperimentTitle.svelte";
     import Stone from "$lib/components/Stone.svelte";
+    // import CodeBlock from "$lib/components/CodeBlock.svelte";
+    import { onMount } from "svelte";
 
     const { data } = $props();
 
-    let hiddenElements: HTMLDivElement[] = $state([]);
-    let mouseX = $state(0);
-    let mouseY = $state(0);
-    let dirty = $state(false);
+    const hiddenElements = $state<HTMLDivElement[]>([]);
+    let glowOverlay: HTMLDivElement;
+    let mouseX = 0;
+    let mouseY = 0;
+    let dirty = false;
 
     const MAX_RADIUS = 100; // start becoming visible at this distance
     const MIN_RADIUS = 10; // fully visible when within this distance
@@ -63,13 +65,24 @@
     const handler = (e: PointerEvent) => {
         mouseX = e.clientX;
         mouseY = e.clientY;
+        if (glowOverlay) {
+            glowOverlay.style.setProperty('--mx', `${e.clientX}px`);
+            glowOverlay.style.setProperty('--my', `${e.clientY}px`);
+        }
         schedule();
     };
 
-    window.addEventListener('pointermove', handler, { passive: true });
+    onMount(() => {
+        window.addEventListener('pointermove', handler, { passive: true });
+        requestAnimationFrame(update);
 
-    requestAnimationFrame(update);
+        return () => {
+            window.removeEventListener('pointermove', handler);
+        };
+    });
 </script>
+
+<div class="glow-overlay" bind:this={glowOverlay}></div>
 
 <ExperimentHeader links={data.experiment.links} />
 
@@ -109,5 +122,18 @@
         opacity: 0;
         transition: opacity 80ms linear; /* small smoothing without lag */
         will-change: opacity;
+    }
+
+    .glow-overlay {
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        z-index: 9999;
+        background: radial-gradient(
+            circle 100px at var(--mx, -200px) var(--my, -200px),
+            rgba(255, 255, 255, 0.15) 0%,
+            rgba(255, 255, 255, 0.06) 30%,
+            transparent 70%
+        );
     }
 </style>
