@@ -4,6 +4,21 @@ import { z } from 'zod';
 
 const experimentsData = [
     {
+        id: 'proximity-visibility',
+        title: 'Proximity Visibility',
+        route: '/experiments/proximity-visibility',
+        description: 'Make an element more or less visible based on how close the mouse is to it.',
+        links: [
+            {
+                name: 'View on Github',
+                url: `${EXPERIMENTS_GITHUB_URL}/proximity-visibility/+page.svelte`,
+                icon: 'fa-brands fa-github',
+            },
+        ],
+        published: true,
+        createdAt: '2026-04-01T00:00:01.000Z',
+    },
+    {
         id: 'orphans',
         title: 'Orphans',
         route: '/experiments/orphans',
