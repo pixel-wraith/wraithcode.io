@@ -8,7 +8,13 @@ const experimentsData = [
         title: 'Custom Cursors',
         route: '/experiments/custom-cursors',
         description: 'Create custom cursors using CSS and SVG (with a PNG fallback).',
-        links: [],
+        links: [
+            {
+                name: 'View on Github',
+                url: `${EXPERIMENTS_GITHUB_URL}/custom-cursors/+page.svelte`,
+                icon: 'fa-brands fa-github',
+            },
+        ],
         published: true,
         createdAt: '2026-04-02T00:00:01.000Z',
     },
