@@ -8,21 +8,25 @@
     let buttonRef: HTMLButtonElement | null = $state(null);
     let particles: HTMLSpanElement[] = $state([]);
 
+    const PARTICLE_COUNT = 10;
     const FADE_DURATION = 1000;
+    const MAGNITUDE = 48; // 64 was too much, 32 was not enough
 
     const onClick = () => {
-        const count = 10;
         liked = !liked;
 
         if (!liked || !buttonRef) {
             return null;
         }
 
-        for (let i = 0; i < count; i++) {
+        for (let i = 0; i < PARTICLE_COUNT; i++) {
             const particle = document.createElement("span");
             particle.classList.add("particle-1");
-            particle.style.top = `${getRandomInt(0, 100)}%`;
-            particle.style.left = `${getRandomInt(0, 100)}%`;
+            // particle.style.top = `${getRandomInt(0, 100)}%`;
+            // particle.style.left = `${getRandomInt(0, 100)}%`;
+            const x = getRandomInt(-MAGNITUDE, MAGNITUDE);
+            const y = getRandomInt(-MAGNITUDE, MAGNITUDE);
+            particle.style.transform = `translate(${x}px, ${y}px)`;
             particle.style.setProperty('--fade-duration', `${FADE_DURATION}ms`);
             buttonRef?.appendChild(particle);
 
@@ -59,9 +63,11 @@
         position: absolute;
         width: 0.5rem;
         height: 0.5rem;
+        inset: 0;
+        margin: auto;
         background: var(--neutral-900);
         border-radius: 50%;
-        transform: translate(-50%, -50%);
+        /*transform: translate(-50%, -50%);*/
         animation:
             fade-out var(--fade-duration) forwards,
             from-center 300ms;
@@ -108,8 +114,7 @@
 
     @keyframes from-center {
         from {
-            top: 50%;
-            left: 50%;
+            transform: translate(0, 0);
         }
     }
 </style>

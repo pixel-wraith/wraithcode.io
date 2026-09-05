@@ -8,6 +8,15 @@ const experiments = [
         published: true,
         createdAt: '2026-09-04T00:00:01.000Z',
     },
+    {
+        id: 'falling-particles',
+        title: 'Falling Particles',
+        route: '/experiments/whimsical-animations/particles/falling-particles',
+        description: '',
+        links: [],
+        published: true,
+        createdAt: '2026-09-04T00:00:01.000Z',
+    },
 ];
 
 export async function load() {
