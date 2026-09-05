@@ -4,18 +4,24 @@
 
     import Stone from "./Stone.svelte";
 
+    type BackButtonProps = {
+        text: string;
+        route: string;
+    }
+
     interface IExperimentHeaderProps {
+        back?: BackButtonProps;
         links: z.infer<typeof experimentLinkSchema>[];
     }
 
-    const { links }: IExperimentHeaderProps = $props();
+    const { back, links }: IExperimentHeaderProps = $props();
 </script>
 <Stone>
     <div class="experiment-header-inner">
         <div class="left-col">
-            <a href="/experiments" class="back-to-experiments">
+            <a href={back?.route ?? "/experiments"} class="back-to-experiments">
                 <i class="fa-solid fa-arrow-left"></i>
-                Back to Experiments
+                {back?.text ?? "Back to Experiments"}
             </a>
         </div>
 
