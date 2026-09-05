@@ -1,21 +1,21 @@
 const experiments = [
     {
-        id: 'particle-generation',
-        title: 'Particle Generation',
-        route: '/experiments/whimsical-animations/particles/particle-generation',
-        description: 'A simple like button with simple particles.',
-        links: [],
-        published: true,
-        createdAt: '2026-09-04T00:00:01.000Z',
-    },
-    {
         id: 'falling-particles',
         title: 'Falling Particles',
         route: '/experiments/whimsical-animations/particles/falling-particles',
         description: '',
         links: [],
         published: true,
-        createdAt: '2026-09-04T00:00:01.000Z',
+        createdAt: '2026-09-04T06:00:01.000Z',
+    },
+    {
+        id: 'particle-generation',
+        title: 'Particle Generation',
+        route: '/experiments/whimsical-animations/particles/particle-generation',
+        description: 'A simple like button with simple particles.',
+        links: [],
+        published: true,
+        createdAt: '2026-09-04T06:00:01.000Z',
     },
 ];
 
