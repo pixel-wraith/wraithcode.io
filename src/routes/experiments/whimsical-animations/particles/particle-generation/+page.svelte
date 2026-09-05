@@ -2,11 +2,39 @@
     import ExperimentHeader from "$lib/components/ExperimentHeader.svelte";
     import ExperimentTitle from "$lib/components/ExperimentTitle.svelte";
     import Stone from "$lib/components/Stone.svelte";
+    import { getRandomInt } from "$lib/utils/number";
 
     let liked = $state(false);
+    let buttonRef: HTMLButtonElement | null = $state(null);
+    let particles: HTMLSpanElement[] = $state([]);
+
+    const FADE_DURATION = 1000;
 
     const onClick = () => {
+        const count = 5;
         liked = !liked;
+
+        if (!liked || !buttonRef) {
+            return null;
+        }
+
+        for (let i = 0; i < count; i++) {
+            const particle = document.createElement("span");
+            particle.classList.add("particle-1");
+            particle.style.top = `${getRandomInt(0, 100)}%`;
+            particle.style.left = `${getRandomInt(0, 100)}%`;
+            particle.style.animationDuration = `${FADE_DURATION}ms`;
+            buttonRef?.appendChild(particle);
+
+            particles.push(particle);
+        }
+
+        window.setTimeout(() => {
+            particles.forEach((particle) => {
+                buttonRef?.removeChild(particle);
+            });
+            particles = [];
+        }, FADE_DURATION + 200);
     };
 </script>
 
@@ -16,7 +44,7 @@
 
 <Stone>
     <div class="container">
-        <button aria-label="Toggle like" onclick={onClick}>
+        <button aria-label="Toggle like" onclick={onClick} bind:this={buttonRef}>
             {#if liked}
                 <i class="fa-solid fa-heart"></i>
             {:else}
@@ -27,6 +55,17 @@
 </Stone>
 
 <style>
+    :global(.particle-1) {
+        position: absolute;
+        width: 0.75rem;
+        height: 0.75rem;
+        background: var(--neutral-900);
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        animation: fade-out ease-out forwards;
+        pointer-events: none;
+    }
+
     .container {
         display: flex;
         justify-content: center;
@@ -37,13 +76,31 @@
     }
 
     button {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 5rem;
+        height: 5rem;
         background: none;
         border: none;
+        border-radius: 50%;
         color: var(--accent1-500);
         cursor: pointer;
 
+        &:hover,
+        &:focus-visible {
+            background: var(--neutral-200);
+        }
+
         i {
             font-size: 2.5rem;
+        }
+    }
+
+    @keyframes fade-out {
+        to {
+            opacity: 0;
         }
     }
 </style>
