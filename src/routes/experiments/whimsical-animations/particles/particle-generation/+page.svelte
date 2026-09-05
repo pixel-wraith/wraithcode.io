@@ -11,7 +11,7 @@
     const FADE_DURATION = 1000;
 
     const onClick = () => {
-        const count = 5;
+        const count = 10;
         liked = !liked;
 
         if (!liked || !buttonRef) {
@@ -23,7 +23,7 @@
             particle.classList.add("particle-1");
             particle.style.top = `${getRandomInt(0, 100)}%`;
             particle.style.left = `${getRandomInt(0, 100)}%`;
-            particle.style.animationDuration = `${FADE_DURATION}ms`;
+            particle.style.setProperty('--fade-duration', `${FADE_DURATION}ms`);
             buttonRef?.appendChild(particle);
 
             particles.push(particle);
@@ -57,12 +57,14 @@
 <style>
     :global(.particle-1) {
         position: absolute;
-        width: 0.75rem;
-        height: 0.75rem;
+        width: 0.5rem;
+        height: 0.5rem;
         background: var(--neutral-900);
         border-radius: 50%;
         transform: translate(-50%, -50%);
-        animation: fade-out ease-out forwards;
+        animation:
+            fade-out var(--fade-duration) forwards,
+            from-center 300ms;
         pointer-events: none;
     }
 
@@ -101,6 +103,13 @@
     @keyframes fade-out {
         to {
             opacity: 0;
+        }
+    }
+
+    @keyframes from-center {
+        from {
+            top: 50%;
+            left: 50%;
         }
     }
 </style>
