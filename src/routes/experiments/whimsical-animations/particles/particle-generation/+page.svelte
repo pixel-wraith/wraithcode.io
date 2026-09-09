@@ -26,7 +26,9 @@
             // particle.style.left = `${getRandomInt(0, 100)}%`;
             const x = getRandomInt(-MAGNITUDE, MAGNITUDE);
             const y = getRandomInt(-MAGNITUDE, MAGNITUDE);
-            particle.style.transform = `translate(${x}px, ${y}px)`;
+            // particle.style.transform = `translate(${x}px, ${y}px)`;
+            particle.style.setProperty('--x', `${x}px`);
+            particle.style.setProperty('--y', `${y}px`);
             particle.style.setProperty('--fade-duration', `${FADE_DURATION}ms`);
             buttonRef?.appendChild(particle);
 
@@ -113,8 +115,21 @@
     }
 
     @keyframes from-center {
-        from {
+        /*
+         * in the first approach, we set the starting point here, and used JS to set the destination
+         */
+        /*from {
             transform: translate(0, 0);
+        }*/
+
+        /*
+         * in this approach, we use the natural default starting point of all particles
+         * (0, 0) and then use js to dynamically set css variables. I like this approach
+         * better because of the symmetry between this keyframe and fade-out, rather than
+         * mixing from and to like in the first approach.
+         */
+        to {
+            transform: translate(var(--x), var(--y));
         }
     }
 </style>
