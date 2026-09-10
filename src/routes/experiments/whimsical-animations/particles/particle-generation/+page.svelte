@@ -2,8 +2,7 @@
     import ExperimentHeader from "$lib/components/ExperimentHeader.svelte";
     import ExperimentTitle from "$lib/components/ExperimentTitle.svelte";
     import Stone from "$lib/components/Stone.svelte";
-    import { normalize } from "$lib/utils/normalize";
-    import { getRandomInt } from "$lib/utils/number";
+    import { getRandomInt, normalize } from "$lib/utils/number";
 
     let liked = $state(false);
     let buttonRef: HTMLButtonElement | null = $state(null);
