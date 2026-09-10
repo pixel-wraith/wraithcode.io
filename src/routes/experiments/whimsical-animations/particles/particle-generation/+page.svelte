@@ -9,6 +9,7 @@
     let particles: HTMLSpanElement[] = $state([]);
 
     const PARTICLE_COUNT = 10;
+    const JITTER = 40;
     const FADE_DURATION = 1000;
     // const MAGNITUDE = 48; // 64 was too much, 32 was not enough
 
@@ -32,14 +33,15 @@
 
         for (let i = 0; i < PARTICLE_COUNT; i++) {
             const particle = document.createElement("span");
+            particle.setAttribute('aria-hidden', 'true');
             particle.classList.add("particle-1");
             // particle.style.top = `${getRandomInt(0, 100)}%`;
             // particle.style.left = `${getRandomInt(0, 100)}%`;
             // const x = getRandomInt(-MAGNITUDE, MAGNITUDE);
             // const y = getRandomInt(-MAGNITUDE, MAGNITUDE);
             // particle.style.transform = `translate(${x}px, ${y}px)`;
-            const angle = getRandomInt(0, 360);
-            const radius = getRandomInt(30, 70);
+            const angle = 360 / PARTICLE_COUNT * i + getRandomInt(-JITTER, JITTER);
+            const radius = getRandomInt(32, 64);
             const [x, y] = convertPolarToCartesian(angle, radius);
             particle.style.setProperty('--x', `${x}px`);
             particle.style.setProperty('--y', `${y}px`);
@@ -88,6 +90,7 @@
             fade-out var(--fade-duration) forwards,
             disperse 300ms forwards;
         pointer-events: none;
+        user-select: none;
     }
 
     .container {
