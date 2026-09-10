@@ -78,6 +78,8 @@
 
 <style>
     :global(.particle-1) {
+        --particle-curve: cubic-bezier(0.2, 0.56, 0, 1);
+
         position: absolute;
         width: 0.5rem;
         height: 0.5rem;
@@ -88,7 +90,7 @@
         /*transform: translate(-50%, -50%);*/
         animation:
             fade-out var(--fade-duration) forwards,
-            disperse 300ms forwards;
+            disperse 500ms forwards var(--particle-curve);
         pointer-events: none;
         user-select: none;
     }
