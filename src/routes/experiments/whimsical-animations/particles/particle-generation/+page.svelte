@@ -2,6 +2,7 @@
     import ExperimentHeader from "$lib/components/ExperimentHeader.svelte";
     import ExperimentTitle from "$lib/components/ExperimentTitle.svelte";
     import Stone from "$lib/components/Stone.svelte";
+    import { normalize } from "$lib/utils/normalize";
     import { getRandomInt } from "$lib/utils/number";
 
     let liked = $state(false);
@@ -40,7 +41,9 @@
             // const x = getRandomInt(-MAGNITUDE, MAGNITUDE);
             // const y = getRandomInt(-MAGNITUDE, MAGNITUDE);
             // particle.style.transform = `translate(${x}px, ${y}px)`;
-            const angle = 360 / PARTICLE_COUNT * i + getRandomInt(-JITTER, JITTER);
+            let angle = normalize(i, 0, PARTICLE_COUNT, 0, 360);
+            angle += getRandomInt(-JITTER, JITTER);
+
             const radius = getRandomInt(32, 64);
             const [x, y] = convertPolarToCartesian(angle, radius);
             particle.style.setProperty('--x', `${x}px`);
