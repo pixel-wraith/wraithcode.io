@@ -175,9 +175,9 @@
         }
 
         i {
-            position: relative;
+            /*position: relative;*/
             font-size: 2.5rem;
-            z-index: 1;
+            /*z-index: 1;*/
         }
     }
 
@@ -195,6 +195,11 @@
             fromThickBorder var(--pop-circle-duration) var(--pop-circle-delay) backwards,
             circleColorShift var(--pop-circle-duration),
             fadeFromOpaque 300ms var(--pop-circle-duration) backwards;
+    }
+
+    button.liked i {
+        animation:
+            fromShrunken 1500ms var(--pop-circle-duration) backwards linear(0, 0.008 0.7%, 0.035 1.5%, 0.152 3.3%, 0.773 9.5%, 0.995 12.2%, 1.138 14.9%, 1.18 16.3%, 1.203 17.7%, 1.209 19.4%, 1.194 21.2%, 1.008 30.7%, 0.974 33.5%, 0.958 36.5%, 0.959 40.2%, 0.998 49.5%, 1.009 55.1%, 0.998 73.5%, 1);
     }
 
     .no-motion-banner {
