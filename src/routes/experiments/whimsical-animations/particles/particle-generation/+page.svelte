@@ -10,6 +10,8 @@
     let particles: HTMLSpanElement[] = $state([]);
 
     const PARTICLE_COUNT = 10;
+    const MIN_DISTANCE = 32;
+    const MAX_DISTANCE = 64;
     const JITTER = 40;
     const MAX_FADE_DELAY = 500;
     const MIN_FADE_DURATION = 500;
@@ -20,10 +22,10 @@
         return (angle * Math.PI) / 180;
     };
 
-    const convertPolarToCartesian = (angle: number, radius: number) => {
+    const convertPolarToCartesian = (angle: number, distance: number) => {
         const angleInRadians = convertDegreesToRadians(angle);
-        const x = radius * Math.cos(angleInRadians);
-        const y = radius * Math.sin(angleInRadians);
+        const x = distance * Math.cos(angleInRadians);
+        const y = distance * Math.sin(angleInRadians);
         return [x, y];
     };
 
@@ -49,15 +51,17 @@
             // particle.style.transform = `translate(${x}px, ${y}px)`;
             let angle = normalize(i, 0, PARTICLE_COUNT, 0, 360);
             angle += getRandomInt(-JITTER, JITTER);
-            const fadeDelay = getRandomInt(0, MAX_FADE_DELAY);
-            const fadeDuration = getRandomInt(MIN_FADE_DURATION, MAX_FADE_DURATION);
+            const distance = getRandomInt(MIN_DISTANCE, MAX_DISTANCE);
+            const fadeDelay = normalize(distance, MIN_DISTANCE, MAX_DISTANCE, 0, MAX_FADE_DELAY);
+            const fadeDuration = normalize(distance, MIN_DISTANCE, MAX_DISTANCE, MIN_FADE_DURATION, MAX_FADE_DURATION);
+            const popDuration = normalize(distance, MIN_DISTANCE, MAX_DISTANCE, 300, 700);
 
-            const radius = getRandomInt(32, 64);
-            const [x, y] = convertPolarToCartesian(angle, radius);
+            const [x, y] = convertPolarToCartesian(angle, distance);
             particle.style.setProperty('--x', `${x}px`);
             particle.style.setProperty('--y', `${y}px`);
             particle.style.setProperty('--fade-delay', `${fadeDelay}ms`);
             particle.style.setProperty('--fade-duration', `${fadeDuration}ms`);
+            particle.style.setProperty('--pop-duration', `${popDuration}ms`);
             buttonRef?.appendChild(particle);
 
             particles.push(particle);
@@ -106,7 +110,7 @@
         /*transform: translate(-50%, -50%);*/
         animation:
             fade-out var(--fade-duration) var(--fade-delay) forwards,
-            disperse 500ms forwards var(--particle-curve);
+            disperse var(--pop-duration) forwards var(--particle-curve);
         pointer-events: none;
         user-select: none;
     }
