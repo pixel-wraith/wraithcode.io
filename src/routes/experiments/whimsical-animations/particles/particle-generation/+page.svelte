@@ -2,6 +2,7 @@
     import ExperimentHeader from "$lib/components/ExperimentHeader.svelte";
     import ExperimentTitle from "$lib/components/ExperimentTitle.svelte";
     import Stone from "$lib/components/Stone.svelte";
+    import { isMotionEnabled } from "$lib/utils/animations";
     import { getRandomInt, normalize } from "$lib/utils/number";
 
     let liked = $state(false);
@@ -28,6 +29,10 @@
         liked = !liked;
 
         if (!liked || !buttonRef) {
+            return null;
+        }
+
+        if (!isMotionEnabled()) {
             return null;
         }
 
@@ -75,6 +80,10 @@
                 <i class="fa-regular fa-heart"></i>
             {/if}
         </button>
+
+        <div class="no-motion-banner">
+            You have requested reduced motion, so the animations on this page may not work as expected.
+        </div>
     </div>
 </Stone>
 
@@ -99,6 +108,7 @@
 
     .container {
         display: flex;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
         width: 100%;
@@ -126,6 +136,19 @@
 
         i {
             font-size: 2.5rem;
+        }
+    }
+
+    .no-motion-banner {
+        display: none;
+        margin-top: 2rem;
+        padding: 1rem;
+        border: 1px solid var(--primary-500);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .no-motion-banner {
+            display: block;
         }
     }
 
