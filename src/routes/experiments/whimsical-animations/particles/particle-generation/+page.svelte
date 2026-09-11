@@ -4,12 +4,14 @@
     import Stone from "$lib/components/Stone.svelte";
     import { isMotionEnabled } from "$lib/utils/animations";
     import { getRandomInt, normalize } from "$lib/utils/number";
+    import { onMount } from "svelte";
 
     let liked = $state(false);
     let buttonRef: HTMLButtonElement | null = $state(null);
     let particles: HTMLSpanElement[] = $state([]);
 
-    const PARTICLE_COUNT = 10;
+    const PARTICLE_DELAY = 300;
+    const PARTICLE_COUNT = 20;
     const MIN_DISTANCE = 32;
     const MAX_DISTANCE = 64;
     const JITTER = 40;
@@ -17,6 +19,17 @@
     const MIN_FADE_DURATION = 500;
     const MAX_FADE_DURATION = 1500;
     // const MAGNITUDE = 48; // 64 was too much, 32 was not enough
+
+    onMount(() => {
+        buttonRef?.style.setProperty(
+            '--pop-circle-delay',
+            `${PARTICLE_DELAY / 2}ms`,
+        );
+        buttonRef?.style.setProperty(
+            '--pop-circle-duration',
+            `${PARTICLE_DELAY}ms`,
+        );
+    })
 
     const convertDegreesToRadians = (angle: number) => {
         return (angle * Math.PI) / 180;
@@ -64,17 +77,27 @@
             particle.style.setProperty('--fade-delay', `${fadeDelay}ms`);
             particle.style.setProperty('--fade-duration', `${fadeDuration}ms`);
             particle.style.setProperty('--pop-duration', `${popDuration}ms`);
-            buttonRef?.appendChild(particle);
 
             particles.push(particle);
         }
 
         window.setTimeout(() => {
             particles.forEach((particle) => {
+                buttonRef?.appendChild(particle);
+            });
+        }, PARTICLE_DELAY);
+
+        const cleanupDuration = MAX_FADE_DURATION
+            + MAX_FADE_DELAY
+            + PARTICLE_DELAY
+            + 200;
+
+        window.setTimeout(() => {
+            particles.forEach((particle) => {
                 buttonRef?.removeChild(particle);
             });
             particles = [];
-        }, MAX_FADE_DURATION + MAX_FADE_DELAY);
+        }, cleanupDuration);
     };
 </script>
 
@@ -84,7 +107,13 @@
 
 <Stone>
     <div class="container">
-        <button aria-label="Toggle like" onclick={onClick} bind:this={buttonRef}>
+        <button
+            aria-label="Toggle like"
+            onclick={onClick}
+            bind:this={buttonRef}
+            class:liked={liked}
+        >
+            <span class="pop-circle"></span>
             {#if liked}
                 <i class="fa-solid fa-heart"></i>
             {:else}
@@ -146,8 +175,26 @@
         }
 
         i {
+            position: relative;
             font-size: 2.5rem;
+            z-index: 1;
         }
+    }
+
+    .pop-circle {
+        position: absolute;
+        inset: 0;
+        border: 2px solid var(--accent2-500);
+        border-radius: 50%;
+        opacity: 0;
+    }
+
+    button.liked .pop-circle {
+        animation:
+            fromShrunken var(--pop-circle-duration),
+            fromThickBorder var(--pop-circle-duration) var(--pop-circle-delay) backwards,
+            circleColorShift var(--pop-circle-duration),
+            fadeFromOpaque 300ms var(--pop-circle-duration) backwards;
     }
 
     .no-motion-banner {
@@ -160,6 +207,27 @@
     @media (prefers-reduced-motion: reduce) {
         .no-motion-banner {
             display: block;
+        }
+    }
+
+    @keyframes fromShrunken {
+        from {
+            transform: scale(0);
+        }
+    }
+    @keyframes fromThickBorder {
+        from {
+            border: 12px solid var(--accent2-500);
+        }
+    }
+    @keyframes circleColorShift {
+        from {
+            background: var(--accent2-200)
+        }
+    }
+    @keyframes fadeFromOpaque {
+        from {
+            opacity: 1;
         }
     }
 
