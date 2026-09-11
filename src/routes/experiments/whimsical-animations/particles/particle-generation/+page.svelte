@@ -11,6 +11,7 @@
 
     const PARTICLE_COUNT = 10;
     const JITTER = 40;
+    const MAX_FADE_DELAY = 500;
     const MIN_FADE_DURATION = 500;
     const MAX_FADE_DURATION = 1500;
     // const MAGNITUDE = 48; // 64 was too much, 32 was not enough
@@ -48,12 +49,14 @@
             // particle.style.transform = `translate(${x}px, ${y}px)`;
             let angle = normalize(i, 0, PARTICLE_COUNT, 0, 360);
             angle += getRandomInt(-JITTER, JITTER);
+            const fadeDelay = getRandomInt(0, MAX_FADE_DELAY);
             const fadeDuration = getRandomInt(MIN_FADE_DURATION, MAX_FADE_DURATION);
 
             const radius = getRandomInt(32, 64);
             const [x, y] = convertPolarToCartesian(angle, radius);
             particle.style.setProperty('--x', `${x}px`);
             particle.style.setProperty('--y', `${y}px`);
+            particle.style.setProperty('--fade-delay', `${fadeDelay}ms`);
             particle.style.setProperty('--fade-duration', `${fadeDuration}ms`);
             buttonRef?.appendChild(particle);
 
@@ -65,7 +68,7 @@
                 buttonRef?.removeChild(particle);
             });
             particles = [];
-        }, MAX_FADE_DURATION + 200);
+        }, MAX_FADE_DURATION + MAX_FADE_DELAY);
     };
 </script>
 
@@ -102,7 +105,7 @@
         border-radius: 50%;
         /*transform: translate(-50%, -50%);*/
         animation:
-            fade-out var(--fade-duration) forwards,
+            fade-out var(--fade-duration) var(--fade-delay) forwards,
             disperse 500ms forwards var(--particle-curve);
         pointer-events: none;
         user-select: none;
