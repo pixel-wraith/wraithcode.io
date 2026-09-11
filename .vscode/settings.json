@@ -10,7 +10,9 @@
         "typescript",
         "svelte",
         "json",
-        "jsonc"
+        "jsonc",
+        "css",
+        "html"
     ],
     "eslint.useFlatConfig": true,
     "eslint.format.enable": true,
@@ -38,6 +40,24 @@
     },
     "[svelte]": {
         "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+        "editor.formatOnSave": true,
+        "editor.tabSize": 4,
+        "editor.detectIndentation": false,
+        "editor.insertSpaces": true,
+        "editor.codeActionsOnSave": {
+            "source.fixAll.eslint": "always"
+        }
+    },
+    "[css]": {
+        "editor.formatOnSave": true,
+        "editor.tabSize": 4,
+        "editor.detectIndentation": false,
+        "editor.insertSpaces": true,
+        "editor.codeActionsOnSave": {
+            "source.fixAll.eslint": "always"
+        }
+    },
+    "[html]": {
         "editor.formatOnSave": true,
         "editor.tabSize": 4,
         "editor.detectIndentation": false,

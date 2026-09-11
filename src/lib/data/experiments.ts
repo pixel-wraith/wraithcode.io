@@ -4,6 +4,15 @@ import { z } from 'zod';
 
 const experimentsData = [
     {
+        id: 'whimsical-animations',
+        title: 'Whimsical Animations',
+        route: '/experiments/whimsical-animations',
+        description: 'Take your animations and interactions to the next level.',
+        links: [],
+        published: true,
+        createdAt: '2026-09-04T00:00:01.000Z',
+    },
+    {
         id: 'custom-cursors',
         title: 'Custom Cursors',
         route: '/experiments/custom-cursors',
