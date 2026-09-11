@@ -11,7 +11,8 @@
 
     const PARTICLE_COUNT = 10;
     const JITTER = 40;
-    const FADE_DURATION = 1000;
+    const MIN_FADE_DURATION = 500;
+    const MAX_FADE_DURATION = 1500;
     // const MAGNITUDE = 48; // 64 was too much, 32 was not enough
 
     const convertDegreesToRadians = (angle: number) => {
@@ -47,12 +48,13 @@
             // particle.style.transform = `translate(${x}px, ${y}px)`;
             let angle = normalize(i, 0, PARTICLE_COUNT, 0, 360);
             angle += getRandomInt(-JITTER, JITTER);
+            const fadeDuration = getRandomInt(MIN_FADE_DURATION, MAX_FADE_DURATION);
 
             const radius = getRandomInt(32, 64);
             const [x, y] = convertPolarToCartesian(angle, radius);
             particle.style.setProperty('--x', `${x}px`);
             particle.style.setProperty('--y', `${y}px`);
-            particle.style.setProperty('--fade-duration', `${FADE_DURATION}ms`);
+            particle.style.setProperty('--fade-duration', `${fadeDuration}ms`);
             buttonRef?.appendChild(particle);
 
             particles.push(particle);
@@ -63,7 +65,7 @@
                 buttonRef?.removeChild(particle);
             });
             particles = [];
-        }, FADE_DURATION + 200);
+        }, MAX_FADE_DURATION + 200);
     };
 </script>
 
