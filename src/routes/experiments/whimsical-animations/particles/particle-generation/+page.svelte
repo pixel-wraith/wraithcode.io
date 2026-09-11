@@ -136,7 +136,7 @@
         height: 0.5rem;
         inset: 0;
         margin: auto;
-        background: var(--neutral-900);
+        background: var(--success-500);
         border-radius: 50%;
         /*transform: translate(-50%, -50%);*/
         animation:
