@@ -55,6 +55,8 @@
             const fadeDelay = normalize(distance, MIN_DISTANCE, MAX_DISTANCE, 0, MAX_FADE_DELAY);
             const fadeDuration = normalize(distance, MIN_DISTANCE, MAX_DISTANCE, MIN_FADE_DURATION, MAX_FADE_DURATION);
             const popDuration = normalize(distance, MIN_DISTANCE, MAX_DISTANCE, 300, 700);
+            // can also add some variation to size
+            // can also add a twinkling effect, so the particles twinkle as they fade out
 
             const [x, y] = convertPolarToCartesian(angle, distance);
             particle.style.setProperty('--x', `${x}px`);
