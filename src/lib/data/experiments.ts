@@ -4,6 +4,26 @@ import { z } from 'zod';
 
 const experimentsData = [
     {
+        id: 'promise-try',
+        title: 'Promise.try',
+        route: '/experiments/promise-try',
+        description: 'Playing with promise .',
+        links: [
+            {
+                name: 'View on GitHub',
+                url: `${EXPERIMENTS_GITHUB_URL}/promise-try/+page.svelte`,
+                icon: 'fa-brands fa-github',
+            },
+            {
+                name: 'MDN Docs',
+                url: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/try',
+                icon: 'fa-regular fa-notes',
+            },
+        ],
+        published: true,
+        createdAt: '2026-09-29T00:00:01.000Z',
+    },
+    {
         id: 'whimsical-animations',
         title: 'Whimsical Animations',
         route: '/experiments/whimsical-animations',
@@ -19,7 +39,7 @@ const experimentsData = [
         description: 'Create custom cursors using CSS and SVG (with a PNG fallback).',
         links: [
             {
-                name: 'View on Github',
+                name: 'View on GitHub',
                 url: `${EXPERIMENTS_GITHUB_URL}/custom-cursors/+page.svelte`,
                 icon: 'fa-brands fa-github',
             },
@@ -34,7 +54,7 @@ const experimentsData = [
         description: 'Make an element more or less visible based on how close the mouse is to it.',
         links: [
             {
-                name: 'View on Github',
+                name: 'View on GitHub',
                 url: `${EXPERIMENTS_GITHUB_URL}/proximity-visibility/+page.svelte`,
                 icon: 'fa-brands fa-github',
             },
@@ -49,7 +69,7 @@ const experimentsData = [
         description: 'Learning how to use the CSS orphans property.',
         links: [
             {
-                name: 'View on Github',
+                name: 'View on GitHub',
                 url: `${EXPERIMENTS_GITHUB_URL}/orphans/+page.svelte`,
                 icon: 'fa-brands fa-github',
             },
@@ -64,7 +84,7 @@ const experimentsData = [
         description: 'A simple gradient text effect using only CSS.',
         links: [
             {
-                name: 'View on Github',
+                name: 'View on GitHub',
                 url: `${EXPERIMENTS_GITHUB_URL}/gradient-text/+page.svelte`,
                 icon: 'fa-brands fa-github',
             },
@@ -79,7 +99,7 @@ const experimentsData = [
         description: 'had some free time, so I thought I\'d play around with loading animation ideas.',
         links: [
             {
-                name: 'View on Github',
+                name: 'View on GitHub',
                 url: `${EXPERIMENTS_GITHUB_URL}/loading-animations-1/+page.svelte`,
                 icon: 'fa-brands fa-github',
             },
@@ -94,7 +114,7 @@ const experimentsData = [
         description: 'Playing around with the paint order of text to see how it changes the rendering and makes the text look different.',
         links: [
             {
-                name: 'View on Github',
+                name: 'View on GitHub',
                 url: `${EXPERIMENTS_GITHUB_URL}/paint-order/+page.svelte`,
                 icon: 'fa-brands fa-github',
             },
@@ -114,7 +134,7 @@ const experimentsData = [
         description: 'A bare-bones example of using the Notifications API to display notifications.',
         links: [
             {
-                name: 'View on Github',
+                name: 'View on GitHub',
                 url: `${EXPERIMENTS_GITHUB_URL}/notifications-api/+page.svelte`,
                 icon: 'fa-brands fa-github',
             },
@@ -134,7 +154,7 @@ const experimentsData = [
         description: 'A small experiment to work with the IndexedDB API and learn how to use it.',
         links: [
             {
-                name: 'View on Github',
+                name: 'View on GitHub',
                 url: `${EXPERIMENTS_GITHUB_URL}/indexdb/+page.svelte`,
                 icon: 'fa-brands fa-github',
             },
@@ -154,7 +174,7 @@ const experimentsData = [
         description: 'Playing around with the <details> element to see what can be done with it.',
         links: [
             {
-                name: 'View on Github',
+                name: 'View on GitHub',
                 url: `${EXPERIMENTS_GITHUB_URL}/animated-details/+page.svelte`,
                 icon: 'fa-brands fa-github',
             },
@@ -174,7 +194,7 @@ const experimentsData = [
         description: 'This is a little snippet used in one of my blog posts to illustrate how to work with the dev.to API.',
         links: [
             {
-                name: 'View on Github',
+                name: 'View on GitHub',
                 url: `${EXPERIMENTS_GITHUB_URL}/dev-to-api/+page.svelte`,
                 icon: 'fa-brands fa-github',
             },
