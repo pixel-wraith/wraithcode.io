@@ -1,4 +1,3 @@
-import { contents } from '$lib/data/contents';
 import { experiments } from '$lib/data/experiments';
 
 export async function load() {
@@ -10,16 +9,7 @@ export async function load() {
         .sort((a: { createdAt: Date }, b: { createdAt: Date }) => b.createdAt.getTime() - a.createdAt.getTime())
         .slice(0, 5);
 
-    const latestContents = contents
-        .map(c => ({
-            ...c,
-            createdAt: new Date(c.createdAt),
-        }))
-        .sort((a: { createdAt: Date }, b: { createdAt: Date }) => b.createdAt.getTime() - a.createdAt.getTime())
-        .slice(0, 10);
-
     return {
         experiments: latestExperiments,
-        contents: latestContents,
     };
 }
