@@ -7,7 +7,7 @@ const experimentsData = [
         id: 'promise-try',
         title: 'Promise.try',
         route: '/experiments/promise-try',
-        description: 'Playing with promise .',
+        description: 'Testing out Promise.try with a few examples.',
         links: [
             {
                 name: 'View on GitHub',
