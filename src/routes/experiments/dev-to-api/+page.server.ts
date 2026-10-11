@@ -7,7 +7,9 @@ import { logger } from '$lib/logger';
 
 import type { PageServerLoad } from './$types';
 
-export const load: PageServerLoad = async () => {
+export const prerender = false;
+
+export const load: PageServerLoad = async ({ setHeaders }) => {
     let articles: IBlogPost[] = [];
 
     try {
@@ -41,6 +43,9 @@ export const load: PageServerLoad = async () => {
         logger.error('Experiment not found', { experimentId: 'dev-to-api' });
         throw error(404, 'Experiment not found');
     }
+
+    // The Worker keeps this page in the edge cache for 10 minutes.
+    setHeaders({ 'cache-control': 'public, s-maxage=600' });
 
     return { articles, experiment };
 };
