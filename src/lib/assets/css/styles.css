@@ -113,7 +113,7 @@ body {
     --neutral-800: #cecece;
     --neutral-850: #dedede;
     --neutral-900: #eeeeee;
-    
+
     --primary-100: #5c0801;
     --primary-200: #831403;
     --primary-300: #b43000;
@@ -135,14 +135,14 @@ body {
     --accent1-900: #7aaeff;
 
     --accent2-100: #005416;
-	--accent2-200: #00731c;
-	--accent2-300: #009c2b;
-	--accent2-400: #00c139;
-	--accent2-500: #00e749;
-	--accent2-600: #00ff5a;
-	--accent2-700: #53ff81;
-	--accent2-800: #83ff9c;
-	--accent2-900: #a5ffb3;
+    --accent2-200: #00731c;
+    --accent2-300: #009c2b;
+    --accent2-400: #00c139;
+    --accent2-500: #00e749;
+    --accent2-600: #00ff5a;
+    --accent2-700: #53ff81;
+    --accent2-800: #83ff9c;
+    --accent2-900: #a5ffb3;
 
     --success-100: #5b0081;
     --success-200: #7500a5;
