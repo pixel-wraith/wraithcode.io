@@ -14,6 +14,8 @@ export default antfu({
         '**/migrations/*',
         '**/fixtures/*',
         'README.md',
+        // Wrangler makes this file. Run "npm run cf-typegen" to update it.
+        'worker-configuration.d.ts',
     ],
     stylistic: {
         'indent': 4,
