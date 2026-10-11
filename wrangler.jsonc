@@ -1,0 +1,20 @@
+{
+    "$schema": "node_modules/wrangler/config-schema.json",
+    "name": "wraithcode-io",
+    "main": ".svelte-kit/cloudflare/_worker.js",
+    "compatibility_date": "2026-10-11",
+    "compatibility_flags": ["nodejs_compat"],
+    "assets": {
+        "binding": "ASSETS",
+        "directory": ".svelte-kit/cloudflare"
+    },
+    "workers_dev": true,
+    "preview_urls": false,
+    "limits": { "cpu_ms": 30000 },
+    "observability": { "enabled": true },
+    "version_metadata": { "binding": "CF_VERSION_METADATA" },
+    "vars": {
+        "NODE_ENV": "production",
+        "PUBLIC_SENTRY_DSN": "https://88eb537aef502ba0369971a3d80e27f9@o4505018196295680.ingest.us.sentry.io/4511040566394880"
+    }
+}
