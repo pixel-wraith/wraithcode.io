@@ -1,13 +1,13 @@
 services:
-  portfolio:
-    image: iamthewraith/wraithcode:latest
-    build:
-      context: .
-      dockerfile: Dockerfile
-    ports:
-      - "3009:3000"
-    env_file:
-      - .env
-    environment:
-      - NODE_ENV=production
-    restart: unless-stopped
+    wraithcode:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        ports:
+            - "5173:5173"
+        env_file:
+            - path: .env
+              required: false
+        volumes:
+            - .:/app
+            - /app/node_modules
