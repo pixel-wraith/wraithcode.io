@@ -28,12 +28,24 @@ export const load: PageServerLoad = async ({ setHeaders }) => {
                  * store it here.
                  */
                 'api-key': env.DEV_TO_API_KEY as string,
+                /**
+                 * ℹ️ dev.to refuses requests that do not have a User-Agent
+                 * header (status 403). Cloudflare Workers do not add this
+                 * header automatically, so we must add it here.
+                 */
+                'user-agent': 'wraithcode.io (+https://wraithcode.io)',
             },
         });
 
+        if (!res.ok) {
+            throw new Error(`dev.to API returned status ${res.status}`);
+        }
+
         articles = await res.json() as IBlogPost[];
     } catch (err) {
-        logger.error('Failed to fetch articles', { error: err });
+        // Put the reason in the message, because the Workers Logs show the message text.
+        const reason = err instanceof Error ? err.message : String(err);
+        logger.error(`Failed to fetch articles: ${reason}`, { error: reason });
         throw error(500, 'Failed to fetch articles');
     }
 
