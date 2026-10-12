@@ -1,12 +1,12 @@
-import { sentrySvelteKit } from "@sentry/sveltekit";
+import { sentrySvelteKit } from '@sentry/sveltekit';
 import { sveltekit } from '@sveltejs/kit/vite';
 import { playwright } from '@vitest/browser-playwright';
 import { defineConfig } from 'vitest/config';
 
 export default defineConfig({
     plugins: [sentrySvelteKit({
-        org: "wraith",
-        project: "wraithcode"
+        org: 'wraith',
+        project: 'wraithcode',
     }), sveltekit()],
     test: {
         expect: { requireAssertions: true },

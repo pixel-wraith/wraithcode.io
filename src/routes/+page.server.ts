@@ -1,5 +1,7 @@
 import { experiments } from '$lib/data/experiments';
 
+export const prerender = true;
+
 export async function load() {
     const latestExperiments = experiments.filter(e => e.published)
         .map(e => ({

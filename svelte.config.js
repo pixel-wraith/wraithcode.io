@@ -1,18 +1,18 @@
-import adapter from '@sveltejs/adapter-node';
+import adapter from '@sveltejs/adapter-cloudflare';
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = { kit: {
-  adapter: adapter(),
+    adapter: adapter(),
 
-  experimental: {
-    tracing: {
-      server: true
+    experimental: {
+        tracing: {
+            server: true,
+        },
+
+        instrumentation: {
+            server: true,
+        },
     },
-
-    instrumentation: {
-      server: true
-    }
-  }
 } };
 
 export default config;

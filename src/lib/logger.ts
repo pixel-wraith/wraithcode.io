@@ -1,4 +1,4 @@
-import * as Sentry from '@sentry/node';
+import * as Sentry from '@sentry/sveltekit';
 
 type LogLevel = 'debug' | 'error' | 'info' | 'trace' | 'warn';
 type ConsoleLogLevel = LogLevel | 'assert' | 'log';
