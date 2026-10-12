@@ -1,6 +1,6 @@
 # wraithcode.io
 
-wraithcode.io is a personal site for front-end experiments and writing. It uses [SvelteKit](https://svelte.dev/docs/kit) and runs on [Cloudflare Workers](https://developers.cloudflare.com/workers/).
+wraithcode.io is a personal site for sharing my learning and experimenting with different technologies and solutions. It uses [SvelteKit](https://svelte.dev/docs/kit) and runs on [Cloudflare Workers](https://developers.cloudflare.com/workers/).
 
 ## Set up
 
