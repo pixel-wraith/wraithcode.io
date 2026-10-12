@@ -88,3 +88,5 @@ npm run preview
 ## Deploy
 
 GitHub Actions deploys the site to Cloudflare Workers when a change goes into the `main` branch. Refer to `.github/workflows/deploy.yaml`.
+
+The Worker serves the custom domain `wraithcode.io`. The `routes` key in `wrangler.jsonc` sets this domain. The Worker also operates at its `workers.dev` URL.
