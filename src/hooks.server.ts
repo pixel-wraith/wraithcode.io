@@ -11,6 +11,10 @@ export const handle = building
             Sentry.initCloudflareSentryHandle({
                 dsn: publicEnv.PUBLIC_SENTRY_DSN,
                 environment: env.NODE_ENV,
+                // initCloudflareSentryHandle does not give the Worker env to the SDK.
+                // Thus, the SDK cannot read SENTRY_RELEASE itself. The deploy workflow
+                // sets SENTRY_RELEASE to the commit SHA.
+                release: env.SENTRY_RELEASE,
                 tracesSampleRate: env.NODE_ENV === 'production' ? 1.0 : 0.1,
                 enableLogs: true,
             }),

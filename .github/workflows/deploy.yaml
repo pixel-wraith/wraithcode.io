@@ -42,14 +42,27 @@ jobs:
               run: npm run build
               env:
                   SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+                  SENTRY_RELEASE: ${{ github.sha }}
 
             - name: Deploy to Cloudflare Workers
               uses: cloudflare/wrangler-action@v4
               with:
                   apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
                   accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-                  command: deploy
+                  command: deploy --outdir dist --var SENTRY_RELEASE:${{ github.sha }}
                   secrets: |
                       DEV_TO_API_KEY
               env:
                   DEV_TO_API_KEY: ${{ secrets.DEV_TO_API_KEY }}
+
+            # Wrangler bundles the build into dist/_worker.js. Upload the source
+            # map of this file, because this is the file that runs on Cloudflare.
+            - name: Upload the Worker source map to Sentry
+              run: |
+                  npx sentry-cli releases new "$SENTRY_RELEASE"
+                  npx sentry-cli sourcemaps upload --release "$SENTRY_RELEASE" --url-prefix '~/' dist
+              env:
+                  SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+                  SENTRY_ORG: wraith
+                  SENTRY_PROJECT: wraithcode
+                  SENTRY_RELEASE: ${{ github.sha }}

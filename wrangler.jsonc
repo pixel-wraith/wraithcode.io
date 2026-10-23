@@ -12,6 +12,7 @@
         { "pattern": "wraithcode.io", "custom_domain": true }
     ],
     "workers_dev": true,
+    "upload_source_maps": true,
     "preview_urls": false,
     "limits": { "cpu_ms": 30000 },
     "observability": { "enabled": true },
