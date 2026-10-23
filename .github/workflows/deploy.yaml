@@ -57,10 +57,12 @@ jobs:
 
             # Wrangler bundles the build into dist/_worker.js. Upload the source
             # map of this file, because this is the file that runs on Cloudflare.
+            # The source paths in the map are relative to dist. Thus, Sentry
+            # showed "dist/../src/...". --strip-prefix removes "dist/..".
             - name: Upload the Worker source map to Sentry
               run: |
                   npx sentry-cli releases new "$SENTRY_RELEASE"
-                  npx sentry-cli sourcemaps upload --release "$SENTRY_RELEASE" --url-prefix '~/' dist
+                  npx sentry-cli sourcemaps upload --release "$SENTRY_RELEASE" --url-prefix '~/' --strip-prefix 'dist/..' dist
               env:
                   SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
                   SENTRY_ORG: wraith
