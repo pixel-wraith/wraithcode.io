@@ -90,3 +90,5 @@ npm run preview
 GitHub Actions deploys the site to Cloudflare Workers when a change goes into the `main` branch. Refer to `.github/workflows/deploy.yaml`.
 
 The Worker serves the custom domain `wraithcode.io`. The `routes` key in `wrangler.jsonc` sets this domain. The Worker also operates at its `workers.dev` URL.
+
+The workflow uploads source maps to Sentry. The build uploads the client source maps. After the deployment, the workflow uploads the source map of `dist/_worker.js`, because Wrangler bundles the server code into this file. The release name is the commit SHA.
